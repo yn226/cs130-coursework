@@ -1,0 +1,288 @@
+body {
+    font-family: "Helvetica Neue", "Helvetica", Arial, sans-serif;
+    color: #fff;
+}
+a, a:hover, a:visited, a:active { 
+    color: #fff;
+    text-decoration: none;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/**********/
+/* Layout */
+/**********/
+aside, footer, header, nav, section, article {
+    display: flex;
+    flex-direction: column;
+}
+body {
+    overflow: hidden;
+    margin: 0px;
+    display: grid;
+    grid-template-columns: 250px auto;
+    grid-template-rows: auto 100px;
+    grid-template-areas:
+       "left main"
+       "bottom bottom";
+    height: 100vh;
+}
+aside {
+    background-color: #000;
+    grid-area: left;
+}
+header {
+    background: #111;
+    position: fixed;
+    width: calc(100vw - 250px);
+    left: 250px;
+}
+
+main {
+    background: #111;
+    grid-area: main;
+    min-height: calc(350px);
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+    z-index: 3;
+}
+
+nav {
+    margin-top: 100px;
+}
+
+footer {
+    background: #222;
+    grid-area: bottom;
+}
+
+
+/***************************/
+/* Accessories & Florishes */
+/***************************/
+::-webkit-scrollbar {
+    width: 16px;
+}
+
+::-webkit-scrollbar-thumb {
+    border: 4px solid transparent;
+    border-radius: 16px;
+    background-clip: padding-box;
+    min-height: 30px;
+}
+::-webkit-scrollbar-thumb {
+    background-color: hsla(0,0%,100%,.3);
+}
+
+/***************************/
+/* Part A: Left Navigation */
+/***************************/
+
+/* Your Code Here */
+#sidebar {
+    padding-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.fab {
+    width: 15%;
+    padding: 5px;
+    margin-left: 30px;
+    font-size: 150%;
+    word-spacing: 25px;
+}
+#sidebar .fas {
+    width: 15%;
+    padding: 10px;
+    margin-left: 20px;
+    margin-right: 5px;
+    border-left: solid 3px black;
+}
+
+#sidebar .selected .fas {
+    border-left: solid 3px green;
+}
+
+/********************************/
+/* Part B: Header & Nav Styling */
+/********************************/
+
+/* Your Code Here */
+header {
+    padding-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    height: 20px;
+    flex-direction: row;
+    text-transform: uppercase;
+    font-size: 0.8em;
+}
+
+nav {
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 70px;
+    width: 200px;
+    letter-spacing: 1px;
+    margin-left: 30px;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    padding: 5px;
+    
+}
+
+nav a{
+    padding: 15px;
+    padding-bottom: 5px;
+}
+
+nav .selected {
+    border-bottom: solid 3px rgb(29, 138, 29);
+    padding-bottom: 2px;
+}
+
+header #upgrade {
+    padding: 5px 30px;
+    margin-left: calc(100vw - 550px);
+    margin-right: 5px;
+    border-radius: 40px;
+    border: solid 1px white;
+}
+
+header #profile{
+    padding: 5px 30px;
+    margin-right: 5px;
+    margin-left: 10px;
+    border-radius: 40px;
+    background-color: #222;
+}
+
+
+/*************************/
+/* Part C: Artists Panel */
+/*************************/
+
+/* Your Code Here */
+#featured-content {
+    padding: 10px;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.artist-card {
+    width: 20%;
+    padding: 10px;
+    margin-top: 0px;
+    background-color:#111;
+    height: 300px;
+    background-position: 0%;
+}
+
+.artist-card div {
+    padding: 5px;
+    height: 100%;
+    border-radius: 10px;
+    background: #222;
+}
+
+.artist-card img{ 
+    background-size: cover;
+    padding: 1em 1.75em;
+    border-radius: 50%;
+    height: auto;
+    max-height: 70%;
+    width: auto;
+    max-width: 100%;
+}
+
+.artist-card p {
+    color:white;
+    padding: 0px;
+    height: 0px;
+    margin-left: 10px;
+    margin-top: 0px;
+}
+
+.artist-card h3 {
+    color: white;
+    margin: 3px;
+    padding: 0px;
+    height: auto;
+    margin-left: 10px;
+}
+
+.play-button {
+    color: #222;
+}
+
+
+
+/**************************/
+/* Part D: Responsive UIs */
+/**************************/
+
+/* Your Code Here */
+
+@media screen and (max-width: 1050px) {
+    .artist-card {
+        width: 33%;
+    }
+}
+
+@media screen and (max-width: 750px){
+    .artist-card {
+        width: 50%;
+    }
+    body {
+        grid-template-columns: 100%;
+        grid-template-areas:
+           "main"
+           "bottom";
+        height: auto;
+        width: 100%;
+    }
+    header #upgrade {
+        display: none;
+    }
+    header #profile{
+        margin-left: 50%;
+    }
+}
+
+/**************************/
+/* Hover Effects */
+/**************************/
+
+/* Your Code Here */
+
+.artist-card:hover  .fas{
+    color: white;
+    background: rgb(29, 138, 29);
+    border-radius: 50%;
+    width:45px;
+    height: 45px;
+    background-position: 0%;
+    margin: -8%;
+    margin-left: 65%;
+    padding: 9%;
+}
+
+#sidebar a:hover {
+    font-weight: 700;
+}
+
+header #upgrade:hover{
+    font-weight: 700;
+} 
+header #profile:hover {
+    font-weight: 700;
+}
+
+nav a:hover{
+    font-weight: 700;
+    border-bottom: solid 3px rgb(29, 138, 29);
+    padding-bottom: 2px;
+}
