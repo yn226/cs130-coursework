@@ -112,10 +112,10 @@ for (const track of tracks) {
 
 const playSong = (ev) => {
 
-    console.log(ev.currentTarget.dataset.index);
+    // console.log(ev.currentTarget.dataset.index);
     const idx = Number(ev.currentTarget.dataset.index);
     const currentTrack = tracks[idx];
-    console.log(currentTrack);
+    // console.log(currentTrack);
 
     document.getElementById("audio-source").src = currentTrack["preview_url"];
   
