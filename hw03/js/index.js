@@ -42,16 +42,50 @@ const initScreen = () => {
 
 initScreen();
 
-// my code:
+//Thumbnail Click Event Handler:
+let imageIndex = 0;
 
-const showImage = (ev) => {
+const featureImage = (ev) => {
     const elem = ev.currentTarget;
+    imageIndex = parseInt(elem.dataset.index);
     console.log(elem.style.backgroundImage);
 
     document.querySelector(".featured_image").style.backgroundImage = elem.style.backgroundImage;
-    // your job: set the .featured_image's backgroundImage to the
-    // element that was just clicked.
-
-    // destinationElement.style.backgroundImage = sourceElement.style.backgroundImage;
 };
+
+const imageElements = document.querySelectorAll('.image');
+for (const elem of imageElements){
+    elem.onclick = featureImage;
+};
+
+//Next and Previous Event Handlers
+
+const featureNext = (ev) => {
+    if (imageIndex === 7) {
+        imageIndex = 0;
+    } else {
+        imageIndex += 1;
+    };
+    console.log("currentIndex:", imageIndex);
+    console.log(images[1]);
+    const elem = images[imageIndex];
+    document.querySelector(".featured_image").style.backgroundImage = `url('${elem}')`;
+};
+
+const featurePrevious = (ev) => {
+    if (imageIndex === 0) {
+        imageIndex = 7;
+    } else {
+        imageIndex -= 1;
+    };
+    console.log("currentIndex:", imageIndex);
+    const elem = images[imageIndex];
+    document.querySelector(".featured_image").style.backgroundImage = `url('${elem}')`;
+};
+
+
+document.querySelector('.next').onclick = featureNext;
+document.querySelector('.prev').onclick = featurePrevious;
+document.querySelector('.featured_image').onclick = featureNext;
+
 
